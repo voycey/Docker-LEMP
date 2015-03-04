@@ -1,6 +1,19 @@
-# Base image and Database Server Setup
+#Base image and Web Server Setup
 FROM phusion/baseimage:0.9.16
 MAINTAINER Dan Voyce <hello@danielvoyce.com>
+
+# Surpress Upstart errors/warning
+RUN dpkg-divert --local --rename --add /sbin/initctl
+RUN ln -sf /bin/true /sbin/initctl
+
+# Let the conatiner know that there is no tty
+ENV DEBIAN_FRONTEND noninteractive
+ENV HOME /root
+
+# This is for testing to enable SSH by default
+RUN rm -f /etc/service/sshd/down
+
+CMD ["/sbin/my_init"]
 
 RUN \
   apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A && \

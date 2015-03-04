@@ -54,8 +54,6 @@ RUN mkdir           	/etc/service/phpfpm
 ADD config/phpfpm.sh 	/etc/service/phpfpm/run
 RUN chmod +x        	/etc/service/phpfpm/run
 
-VOLUME ["/etc/mysql", "/var/lib/mysql"] 
-
 EXPOSE 80
 # End Nginx-PHP
 # Open a shell

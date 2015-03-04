@@ -24,11 +24,10 @@ RUN mkdir /etc/service/mysql && \
     chmod +x /etc/service/mysql/run
 
 # Define mountable directories.
-# Should do this for the FPM container too
-#VOLUME ["/etc/mysql", "/var/lib/mysql"] 
+VOLUME ["/etc/mysql", "/var/lib/mysql"]
 
 # Define working directory.
-#WORKDIR /data
+WORKDIR /data
 
 # Expose ports.
 EXPOSE 3306

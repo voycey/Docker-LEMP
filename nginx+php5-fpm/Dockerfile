@@ -1,4 +1,5 @@
 FROM phusion/baseimage:0.9.16
+MAINTAINER Dan Voyce <hello@danielvoyce.com>
 
 ENV HOME /root
 
@@ -53,12 +54,8 @@ RUN mkdir           	/etc/service/phpfpm
 ADD config/phpfpm.sh 	/etc/service/phpfpm/run
 RUN chmod +x        	/etc/service/phpfpm/run
 
-ADD config/supervisord.conf /etc/supervisor/supervisord.conf
-CMD ["/usr/bin/supervisord"]
-
 EXPOSE 80
 # End Nginx-PHP
 # Open a shell
-
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

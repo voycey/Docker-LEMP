@@ -10,9 +10,12 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 CMD ["/sbin/my_init"]
 
+# Try and speed things up from Aus
+RUN sed -i 's/archive.ubuntu.com/au.archive.ubuntu.com/' /etc/apt/sources.list
+
 # Nginx-PHP Installation
 RUN apt-get update
-RUN apt-get install -y vim curl wget build-essential supervisor
+RUN apt-get install -y vim curl wget build-essential
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
 RUN apt-get install -y --force-yes\

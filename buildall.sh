@@ -12,7 +12,9 @@ do
             	echo "=== Creating storage container for MariaDB ==="
 				#create the volume once
 				docker run -d -v /var/lib/mysql --name db_vol -p 22:22 phusion/baseimage
-				#touch mariadb/.volcreated
+				touch mariadb/.volcreated
+			else
+				echo "=== Storage Container already created ==="
 			fi
 			cd mariadb && ./start.sh
 			break
@@ -29,7 +31,4 @@ echo "Building NGINX+FPM"
 cd ..
 #Build NGINX
 docker build -t webapp nginx+php5-fpm
-	
-if ! cd nginx+php5-fpm && ./start.sh; then
-	echo "Error starting NGINX & FPM - Already running?"
-fi
+cd nginx+php5-fpm && ./start.sh

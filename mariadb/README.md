@@ -1,4 +1,5 @@
 Once the container is built you can run start.sh (or use the following code)
+
 ```
 #!/bin/bash
 
@@ -10,5 +11,4 @@ if [ ! -f .admincreated ]; then
 	docker exec $MARIADB_CONTAINERID /root/create-admin.sh
 	touch .admincreated
 fi
-
 ```

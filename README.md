@@ -3,6 +3,9 @@
 A Docker LEMP Stack based on Phusion Base Image + Nginx + MariaDB with Sphinx and Redis containers (tba)
 
 ## Getting Started
+
+Basically install docker, and then clone this and then ./buildall.sh and it should kick everything off!
+
 Currently the following things are true
 
 * The www directory in the nginx folder is the webroot

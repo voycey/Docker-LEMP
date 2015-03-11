@@ -2,6 +2,7 @@
 # Cleanup docker files: untagged containers and images.
 #
 # Use `docker-cleanup -n` for a dry run to see what would be deleted.
+# taken from https://github.com/auser/yadr/blob/master/bin/docker-cleanup.sh
 
 untagged_containers() {
 	# Print containers using untagged images: $1 is used with awk's print: 0=line, 1=column 1.
@@ -44,4 +45,3 @@ untagged_containers 1 | xargs docker rm --volumes=true
 # Remove untagged images
 echo "Removing images:" >&2
 untagged_images 3 | xargs docker rmi
-docker rm `docker ps --no-trunc -aq`
